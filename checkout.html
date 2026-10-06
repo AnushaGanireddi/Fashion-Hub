@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Checkout | FashionHub</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f7f7f7;
+            color: #171717;
+        }
+
+        header {
+            height: 80px;
+            background: white;
+            border-bottom: 1px solid #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 7%;
+        }
+
+        .logo {
+            font-size: 26px;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        .logo span {
+            font-weight: normal;
+        }
+
+        .secure {
+            color: #555;
+            font-size: 14px;
+        }
+
+        .container {
+            width: 86%;
+            max-width: 1200px;
+            margin: 40px auto;
+        }
+
+        h1 {
+            font-size: 32px;
+            margin-bottom: 30px;
+        }
+
+        .checkout {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 30px;
+        }
+
+        .box {
+            background: white;
+            padding: 28px;
+            margin-bottom: 20px;
+            border: 1px solid #e1e1e1;
+        }
+
+        .box h2 {
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 7px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        input,
+        textarea,
+        select {
+            width: 100%;
+            padding: 13px;
+            border: 1px solid #ccc;
+            margin-bottom: 18px;
+            font-size: 14px;
+        }
+
+        textarea {
+            height: 90px;
+            resize: vertical;
+        }
+
+        .row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .payment-option {
+            border: 1px solid #ccc;
+            padding: 15px;
+            margin-bottom: 12px;
+            cursor: pointer;
+        }
+
+        .payment-option:hover {
+            border-color: #111;
+        }
+
+        .payment-option input {
+            width: auto;
+            margin: 0 10px 0 0;
+        }
+
+        .summary-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .total {
+            display: flex;
+            justify-content: space-between;
+            font-size: 21px;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+
+        .place-order {
+            width: 100%;
+            padding: 16px;
+            background: #171717;
+            color: white;
+            border: none;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 25px;
+        }
+
+        .place-order:hover {
+            background: #333;
+        }
+
+        .back {
+            display: inline-block;
+            margin-top: 10px;
+            color: #333;
+            text-decoration: none;
+        }
+
+        .success {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.6);
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+
+        .success-box {
+            background: white;
+            width: 420px;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .success-box h2 {
+            margin-bottom: 15px;
+        }
+
+        .success-box p {
+            color: #555;
+            margin-bottom: 20px;
+        }
+
+        .continue {
+            background: #171717;
+            color: white;
+            border: none;
+            padding: 13px 25px;
+            cursor: pointer;
+        }
+
+        @media (max-width: 800px) {
+            .checkout {
+                grid-template-columns: 1fr;
+            }
+
+            header {
+                padding: 0 4%;
+            }
+
+            .container {
+                width: 92%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">
+        FASHION<span>HUB</span>
+    </div>
+
+    <div class="secure">
+        🔒 Secure Checkout
+    </div>
+</header>
+
+
+<div class="container">
+
+    <h1>Checkout</h1>
+
+    <div class="checkout">
+
+        <!-- LEFT SIDE -->
+
+        <div>
+
+            <div class="box">
+
+                <h2>1. Contact Information</h2>
+
+                <label>Full Name</label>
+                <input
+                    type="text"
+                    id="name"
+                    placeholder="Enter your full name"
+                >
+
+                <label>Email Address</label>
+                <input
+                    type="email"
+                    id="email"
+                    placeholder="Enter your email"
+                >
+
+                <label>Mobile Number</label>
+                <input
+                    type="tel"
+                    id="phone"
+                    placeholder="Enter your mobile number"
+                >
+
+            </div>
+
+
+            <div class="box">
+
+                <h2>2. Delivery Address</h2>
+
+                <label>House / Flat / Street</label>
+
+                <textarea
+                    id="address"
+                    placeholder="Enter your complete address"
+                ></textarea>
+
+                <div class="row">
+
+                    <div>
+                        <label>City</label>
+                        <input
+                            type="text"
+                            id="city"
+                            placeholder="City"
+                        >
+                    </div>
+
+                    <div>
+                        <label>PIN Code</label>
+                        <input
+                            type="text"
+                            id="pincode"
+                            placeholder="PIN Code"
+                        >
+                    </div>
+
+                </div>
+
+                <label>State</label>
+
+                <select id="state">
+
+                    <option value="">Select State</option>
+                    <option>Andhra Pradesh</option>
+                    <option>Telangana</option>
+                    <option>Karnataka</option>
+                    <option>Tamil Nadu</option>
+                    <option>Maharashtra</option>
+                    <option>Kerala</option>
+
+                </select>
+
+            </div>
+
+
+            <div class="box">
+
+                <h2>3. Payment Method</h2>
+
+                <div class="payment-option">
+                    <label>
+                        <input
+                            type="radio"
+                            name="payment"
+                            value="Cash on Delivery"
+                            checked
+                        >
+                        Cash on Delivery
+                    </label>
+                </div>
+
+                <div class="payment-option">
+                    <label>
+                        <input
+                            type="radio"
+                            name="payment"
+                            value="UPI"
+                        >
+                        UPI
+                    </label>
+                </div>
+
+                <div class="payment-option">
+                    <label>
+                        <input
+                            type="radio"
+                            name="payment"
+                            value="Card"
+                        >
+                        Credit / Debit Card
+                    </label>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- RIGHT SIDE -->
+
+        <div>
+
+            <div class="box">
+
+                <h2>Order Summary</h2>
+
+                <div id="orderItems"></div>
+
+                <div class="summary-item">
+                    <span>Subtotal</span>
+                    <span id="subtotal">₹0</span>
+                </div>
+
+                <div class="summary-item">
+                    <span>Delivery</span>
+                    <span>FREE</span>
+                </div>
+
+                <div class="total">
+                    <span>Total</span>
+                    <span id="total">₹0</span>
+                </div>
+
+                <button
+                    class="place-order"
+                    onclick="placeOrder()"
+                >
+                    Place Order
+                </button>
+
+                <a
+                    href="/"
+                    class="back"
+                >
+                    ← Continue Shopping
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- SUCCESS POPUP -->
+
+<div
+    class="success"
+    id="success"
+>
+
+    <div class="success-box">
+
+        <h2>🎉 Order Confirmed!</h2>
+
+        <p id="orderMessage">
+            Your order has been successfully placed.
+        </p>
+
+        <button
+            class="continue"
+            onclick="goHome()"
+        >
+            Continue Shopping
+        </button>
+
+    </div>
+
+</div>
+
+
+<script>
+
+    // Get cart from browser
+    let cart = JSON.parse(
+        localStorage.getItem("cart")
+    ) || [];
+
+
+    function displayOrder() {
+
+        const container =
+            document.getElementById("orderItems");
+
+        let subtotal = 0;
+
+        container.innerHTML = "";
+
+
+        if (cart.length === 0) {
+
+            container.innerHTML =
+                "<p>Your cart is empty.</p>";
+
+            return;
+        }
+
+
+        cart.forEach(item => {
+
+            const quantity =
+                item.quantity || 1;
+
+            const price =
+                item.price * quantity;
+
+            subtotal += price;
+
+
+            const div =
+                document.createElement("div");
+
+            div.className = "summary-item";
+
+            div.innerHTML = `
+                <span>
+                    ${item.name} × ${quantity}
+                </span>
+
+                <span>
+                    ₹${price}
+                </span>
+            `;
+
+            container.appendChild(div);
+
+        });
+
+
+        document.getElementById("subtotal")
+            .textContent = "₹" + subtotal;
+
+        document.getElementById("total")
+            .textContent = "₹" + subtotal;
+    }
+
+
+    function placeOrder() {
+
+        const name =
+            document.getElementById("name").value.trim();
+
+        const email =
+            document.getElementById("email").value.trim();
+
+        const phone =
+            document.getElementById("phone").value.trim();
+
+        const address =
+            document.getElementById("address").value.trim();
+
+        const city =
+            document.getElementById("city").value.trim();
+
+        const pincode =
+            document.getElementById("pincode").value.trim();
+
+        const state =
+            document.getElementById("state").value;
+
+
+        if (
+            !name ||
+            !email ||
+            !phone ||
+            !address ||
+            !city ||
+            !pincode ||
+            !state
+        ) {
+
+            alert(
+                "Please fill all delivery details."
+            );
+
+            return;
+        }
+
+
+        if (cart.length === 0) {
+
+            alert("Your cart is empty.");
+
+            return;
+        }
+
+
+        const orderNumber =
+            "FH" +
+            Date.now().toString().slice(-8);
+
+
+        document.getElementById("orderMessage")
+            .textContent =
+            "Thank you " +
+            name +
+            "! Your order #" +
+            orderNumber +
+            " has been placed successfully.";
+
+
+        document.getElementById("success")
+            .style.display = "flex";
+
+
+        // Clear cart
+        localStorage.removeItem("cart");
+
+    }
+
+
+    function goHome() {
+
+        window.location.href = "/";
+
+    }
+
+
+    displayOrder();
+
+</script>
+
+</body>
+</html>
